@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="update_product_internal_reference" model="ir.module.data">
+        <field name="name">Update Product Internal Reference</field>
+        <field name="model">ir.model.fields</field>
+        
+        <field name="res_id" ref="product.model_product_product_internal_reference"/>
+        
+    </record>
+</odoo>
