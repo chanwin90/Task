@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <!-- Wizard Form View -->
+        <record id="view_general_ledger_partner_form" model="ir.ui.view">
+            <field name="name">general.ledger.partner.form</field>
+            <field name="model">general.ledger.partner</field>
+            <field name="arch" type="xml">
+                <form string="General Ledger Report Wizard">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="journal"/>
+                        <field name="partner"/>
+                    </group>
+                    <footer>
+                        <button string="XLSX" type="object" name="generate_report" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_general_ledger_partner_menu" model="ir.actions.act_window">
+            <field name="name">General Ledger Partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">general.ledger.partner</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_general_ledger_partner_form"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="account.model_account_account"/>
+            <field name="binding_type">report</field>
+        </record>
+    
+        <menuitem
+                id="menu_general_ledger"
+                name="General Ledger Report"
+                sequence="3"
+                parent="account.menu_finance_reports"
+                action="action_general_ledger_partner_menu"
+        />
+    </data>
+</odoo>
