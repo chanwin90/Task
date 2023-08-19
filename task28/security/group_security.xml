@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="group_logistic_user">
+        <field name="name">Logistic</field>
+        
+    </record>
+
+    <record model="res.groups" id="group_courier">
+        <field name="name">Courier</field>
+        <field name="category_id" ref="group_logistic_user"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        
+    </record>
+
+    <record model="res.groups" id="group_agent">
+        <field name="name">Agent</field>
+        <field name="category_id" ref="group_logistic_user"/>
+        <field name="implied_ids" eval="[(4, ref('group_courier'))]"/>
+        
+    </record>
+
+    <record model="res.groups" id="group_operator">
+        <field name="name">Operator</field>
+        <field name="category_id" ref="group_logistic_user"/>
+        <field name="implied_ids" eval="[(4, ref('group_agent'))]"/>
+        
+    </record>
+
+    <record model="res.groups" id="group_supervisor">
+        <field name="name">Supervisor</field>
+        <field name="category_id" ref="group_logistic_user"/>
+        <field name="implied_ids" eval="[(4, ref('group_operator'))]"/>
+       
+    </record>
+
+    <record model="res.groups" id="group_administrator">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="group_logistic_user"/>
+        <field name="implied_ids" eval="[(4, ref('group_supervisor'))]"/>
+        
+    </record>
+</odoo>
